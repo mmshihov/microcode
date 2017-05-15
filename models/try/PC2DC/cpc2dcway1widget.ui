@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CPc2DcWay1Widget</class>
+ <widget class="QWidget" name="CPc2DcWay1Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QFrame{border-image: url(:/try/pc2dc/alu.png);}</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="mRg1WrVal">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>104</y>
+      <width>21</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mBd1OutVal">
+    <property name="geometry">
+     <rect>
+      <x>606</x>
+      <y>503</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mCt1IncVal">
+    <property name="geometry">
+     <rect>
+      <x>606</x>
+      <y>422</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mRg1WrHint">
+    <property name="geometry">
+     <rect>
+      <x>431</x>
+      <y>97</y>
+      <width>46</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">(y99)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mBd1OutHint">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>496</y>
+      <width>40</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">(y99)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mDVal">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>10</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Courier New</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">00000000</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mCt1WrHint">
+    <property name="geometry">
+     <rect>
+      <x>579</x>
+      <y>382</y>
+      <width>46</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">(y99)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mCt1Val">
+    <property name="geometry">
+     <rect>
+      <x>392</x>
+      <y>430</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Courier New</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">00000000</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mRg1Out7Hint">
+    <property name="geometry">
+     <rect>
+      <x>236</x>
+      <y>216</y>
+      <width>46</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">(p9)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mRg1Out7Val">
+    <property name="geometry">
+     <rect>
+      <x>221</x>
+      <y>227</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mBd1Val">
+    <property name="geometry">
+     <rect>
+      <x>407</x>
+      <y>544</y>
+      <width>90</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Courier New</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">00000000</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mCt1WrVal">
+    <property name="geometry">
+     <rect>
+      <x>606</x>
+      <y>389</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mCt1IncHint">
+    <property name="geometry">
+     <rect>
+      <x>579</x>
+      <y>417</y>
+      <width>46</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">(y99)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mRg1Val">
+    <property name="geometry">
+     <rect>
+      <x>238</x>
+      <y>140</y>
+      <width>130</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Courier New</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">00000000</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mXor1Val">
+    <property name="geometry">
+     <rect>
+      <x>387</x>
+      <y>314</y>
+      <width>131</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Courier New</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">00000000</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mXor1NotVal">
+    <property name="geometry">
+     <rect>
+      <x>604</x>
+      <y>275</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mXor1NotHint">
+    <property name="geometry">
+     <rect>
+      <x>577</x>
+      <y>268</y>
+      <width>40</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image:none;</string>
+    </property>
+    <property name="text">
+     <string notr="true">(y99)</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

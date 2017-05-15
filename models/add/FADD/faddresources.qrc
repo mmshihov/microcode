@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/add/fadd">
+        <file alias="alu1.png">image/alu1.png</file>
+    </qresource>
+</RCC>

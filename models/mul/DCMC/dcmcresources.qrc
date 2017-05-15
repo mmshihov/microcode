@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/mul/dcmc">
+        <file alias="first.png">image/first.png</file>
+        <file alias="second.png">image/second.png</file>
+        <file alias="third.png">image/third.png</file>
+        <file alias="fourth.png">image/fourth.png</file>
+    </qresource>
+</RCC>

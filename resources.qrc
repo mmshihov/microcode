@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/common">
+        <file alias="mili1.png">image/mili1.png</file>
+        <file alias="mili2.png">image/mili2.png</file>
+        <file alias="moore1.png">image/moore1.png</file>
+        <file alias="moore2.png">image/moore2.png</file>
+        <file alias="manual.png">image/manual.png</file>
+        <file alias="autotest.png">image/autotest.png</file>
+        <file alias="break.png">image/break.png</file>
+        <file alias="debug.png">image/debug.png</file>
+        <file alias="execute.png">image/execute.png</file>
+        <file alias="next.png">image/next.png</file>
+        <file alias="open.png">image/open.png</file>
+        <file alias="prev.png">image/prev.png</file>
+        <file alias="programming.png">image/programming.png</file>
+        <file alias="save.png">image/save.png</file>
+        <file alias="embleme.png">image/embleme.png</file>
+    </qresource>
+    <qresource prefix="/translate">
+        <file alias="ru_RU">translate/microcode_ru.qm</file>
+    </qresource>
+</RCC>

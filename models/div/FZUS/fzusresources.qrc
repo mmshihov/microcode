@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/div/fzus">
+        <file alias="alu.png">image/alu.png</file>
+        <file alias="alu2.png">image/alu2.png</file>
+        <file alias="alu3.png">image/alu3.png</file>
+    </qresource>
+</RCC>

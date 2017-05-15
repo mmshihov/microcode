@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/try/pc2dc">
+        <file alias="alu.png">image/alu.png</file>
+    </qresource>
+</RCC>
