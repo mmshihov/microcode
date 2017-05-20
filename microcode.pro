@@ -94,7 +94,8 @@ SOURCES += main.cpp\
     models/add/FADD/cfaddalu1.cpp \
     models/add/FADD/cfaddmvcfactory.cpp \
     models/add/FADD/cfaddtextsource.cpp \
-    models/add/FADD/cfaddinputdialog.cpp
+    models/add/FADD/cfaddinputdialog.cpp \
+    cindividualtask.cpp
 
 HEADERS  += cmicrocodemainwindow.h \
     cbitblock.h \
@@ -181,7 +182,8 @@ HEADERS  += cmicrocodemainwindow.h \
     models/add/FADD/cfaddmvcfactory.h \
     models/add/FADD/cfaddtextsource.h \
     models/add/FADD/cfaddinputdialog.h \
-    version_number.h
+    version_number.h \
+    cindividualtask.h
 
 FORMS    += cmicrocodemainwindow.ui \
     models/mul/PCS1/cpcs1firstwidget.ui \
