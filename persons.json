@@ -1,0 +1,11 @@
+[
+    {   
+        "id": "Иванов И.И.",
+        "secret_prefix": "Ivanov"},
+    {   
+        "id": "Петров П.П.",
+        "secret_prefix": "Petrov"},
+    {   
+        "id": "Сидоров С.С.",
+        "secret_prefix": "Sidorov"}
+]

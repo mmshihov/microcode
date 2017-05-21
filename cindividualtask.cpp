@@ -9,10 +9,11 @@
 
 #include <ctime>
 
-const QString CIndividualTask::STUDENT_ID_STRING_JSON_KEY = "id";
-const QString CIndividualTask::STUDENT_SECRET_PREFIX_STRING_JSON_KEY = "secret_prefix";
-const QString CIndividualTask::SWAP_HISTORY_STRING_JSON_KEY = "swap_history";
-const QString CIndividualTask::SIGNATURE_STRING_JSON_KEY = "signature";
+
+const QString CIndividualTask::STUDENT_ID_STRING_JSON_KEY("id");
+const QString CIndividualTask::STUDENT_SECRET_PREFIX_STRING_JSON_KEY("secret_prefix");
+const QString CIndividualTask::SWAP_HISTORY_STRING_JSON_KEY("swap_history");
+const QString CIndividualTask::SIGNATURE_STRING_JSON_KEY("signature");
 
 
 void CIndividualTask::InitSignalPermutation(CSignalPermutation &permutation) {
