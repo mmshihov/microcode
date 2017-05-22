@@ -4,6 +4,7 @@
 #include <QGridLayout>
 
 #include <QMessageBox>
+#include <QFileDialog>
 
 #include <QSettings>
 
@@ -13,6 +14,8 @@
 #include "ccpu.h"
 #include "cromtablemodel.h"
 #include "cromeditordelegate.h"
+#include "cindividualtask.h"
+#include "cindividualtaskcreationdialog.h"
 #include "ctextout.h"
 
 #include "version_number.h"
@@ -41,6 +44,8 @@ CMicrocodeMainWindow::CMicrocodeMainWindow(QWidget *parent)
 
     InitRNG();
 
+    mCreateTasksDialog = 0;
+
     mCurrentEngine = 0;
     SetState(READY_STATE);
 
@@ -56,6 +61,9 @@ CMicrocodeMainWindow::CMicrocodeMainWindow(QWidget *parent)
 
 CMicrocodeMainWindow::~CMicrocodeMainWindow() {
     delete ui;
+
+    if (mCreateTasksDialog != 0)
+        delete mCreateTasksDialog;
 }
 
 void CMicrocodeMainWindow::ShiftToEngine(unsigned int index) {
@@ -122,6 +130,8 @@ void CMicrocodeMainWindow::CreateInitialToolBar() {
 
 void CMicrocodeMainWindow::CreateFileActions() {
     CreateOpenWorkAction();
+    CreateCheckWorkAction();
+    CreateCreateWorkAction();
 
     CreatePc2DcLoadAction();
     CreatePcs1LoadAction();
@@ -237,14 +247,35 @@ QGridLayout *CMicrocodeMainWindow::CreateGridLayout() {
 }
 
 void CMicrocodeMainWindow::CreateOpenWorkAction() {
-    QAction *action = new QAction(QIcon(":/common/open.png"), tr("&Open individual task"), this);
+    QAction *action = new QAction(QIcon(":/common/open.png"), tr("&Open individual task..."), this);
     action->setShortcut(QKeySequence::Open);
-    QString text(tr("Load individusl tasks from file"));
+    QString text(tr("Load individual task from file..."));
     action->setToolTip(text);
     action->setStatusTip(text);
     connect(action, SIGNAL(triggered()), SLOT(OpenWorkSlot()));
 
     mOpenWorkAction = action;
+}
+
+void CMicrocodeMainWindow::CreateCheckWorkAction() {
+    QAction *action = new QAction(QIcon(":/common/check.png"), tr("&Check individual task..."), this);
+    QString text(tr("Check individual task..."));
+    action->setToolTip(text);
+    action->setStatusTip(text);
+    connect(action, SIGNAL(triggered()), SLOT(CheckWorkSlot()));
+
+    mCheckWorkAction = action;
+}
+
+void CMicrocodeMainWindow::CreateCreateWorkAction() {
+    QAction *action = new QAction(QIcon(":/common/save.png"), tr("&Create individual tasks..."), this);
+    action->setShortcut(QKeySequence::Save);
+    QString text(tr("Create individual tasks..."));
+    action->setToolTip(text);
+    action->setStatusTip(text);
+    connect(action, SIGNAL(triggered()), SLOT(CreateWorkSlot()));
+
+    mCreateWorkAction = action;
 }
 
 void CMicrocodeMainWindow::CreatePc2DcLoadAction() {
@@ -454,6 +485,8 @@ QMenu *CMicrocodeMainWindow::CreateFileMenu() {
     QMenu *menu = new QMenu(tr("&File"));
 
     menu->addAction(mOpenWorkAction);
+    menu->addAction(mCheckWorkAction);
+    menu->addAction(mCreateWorkAction);
     menu->addSeparator();
     menu->addMenu(CreateTaskLoaderMenu());
     menu->addSeparator();
@@ -621,10 +654,33 @@ void CMicrocodeMainWindow::closeEvent(QCloseEvent *event) {
 }
 
 void CMicrocodeMainWindow::OpenWorkSlot() {
-    QMessageBox::information(
-                this,
-                tr("Is in TODO list, really"),
-                tr("Individual tasks can be loaded from a file."));
+    QString fileName = QFileDialog::getOpenFileName(
+                    this,
+                    tr("Open individual task JSON file"),
+                    QString(),
+                    tr("JSON recipient list (*.json);;JSON recipient list in text (*.txt)"));
+    if (fileName.isNull())
+        return;
+
+    CIndividualTask::Instance()->LoadFromFile(fileName);
+
+    if (!CIndividualTask::Instance()->IsLoaded()) {
+        QMessageBox::warning(this, tr("Error of task loading!"), tr("Check your task file, please!"));
+        return;
+    }
+
+    //TODO update hints...
+}
+
+void CMicrocodeMainWindow::CheckWorkSlot() {
+    //TODO: dialog etc...
+}
+
+void CMicrocodeMainWindow::CreateWorkSlot() {
+    if (mCreateTasksDialog == 0)
+        mCreateTasksDialog = new CIndividualTaskCreationDialog();
+
+    mCreateTasksDialog->exec();
 }
 
 void CMicrocodeMainWindow::LoadPc2DcSlot() {

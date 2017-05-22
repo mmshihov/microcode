@@ -15,6 +15,7 @@
         <file alias="programming.png">image/programming.png</file>
         <file alias="save.png">image/save.png</file>
         <file alias="embleme.png">image/embleme.png</file>
+        <file alias="check.png">image/check.png</file>
     </qresource>
     <qresource prefix="/translate">
         <file alias="ru_RU">translate/microcode_ru.qm</file>

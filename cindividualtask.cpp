@@ -94,12 +94,12 @@ void CIndividualTask::SaveSeparateTask(const QString&            id,
                                        CIndividualTask::EStatus& status) {
     QJsonObject task;
     task.insert(STUDENT_ID_STRING_JSON_KEY,     QJsonValue(id));
-    task.insert(SWAP_HISTORY_STRING_JSON_KEY,   QJsonValue(QString(swapHistory.toBase64())));
-    task.insert(SIGNATURE_STRING_JSON_KEY,      QJsonValue(QString(signature.toBase64())));
+    task.insert(SWAP_HISTORY_STRING_JSON_KEY,   QJsonValue(QString(swapHistory.toHex())));
+    task.insert(SIGNATURE_STRING_JSON_KEY,      QJsonValue(QString(signature.toHex())));
 
     QJsonDocument json(task);
 
-    QFile file(taskFoldername + "/" + id.trimmed());
+    QFile file(taskFoldername + "/" + id.trimmed() + ".json");
     if (!file.open(QIODevice::WriteOnly)) {
         status = IO_ERROR;
         return;
@@ -129,8 +129,7 @@ void CIndividualTask::LoadFromFile(const QString &taskFilename) {
     if (!taskFile.open(QIODevice::ReadOnly))
         return;
 
-    QJsonDocument jsonTask;
-    jsonTask.fromBinaryData(taskFile.readAll());
+    QJsonDocument jsonTask = QJsonDocument::fromJson(taskFile.readAll());
 
     if (!jsonTask.isObject())
         return;
@@ -138,20 +137,24 @@ void CIndividualTask::LoadFromFile(const QString &taskFilename) {
     QJsonValue value;
     value = jsonTask.object().value(STUDENT_ID_STRING_JSON_KEY);
     if (value.isUndefined())
-        return false;
+        return;
     mStudentId = value.toString();
 
     value = jsonTask.object().value(SWAP_HISTORY_STRING_JSON_KEY);
     if (value.isUndefined())
-        return false;
+        return;
+    QByteArray swapHistoryHex;
+    swapHistoryHex.append(value.toString());
     mSwapHistory.clear();
-    mSwapHistory.append(value.toString());
+    mSwapHistory.append(QByteArray::fromHex(swapHistoryHex));
 
     value = jsonTask.object().value(SIGNATURE_STRING_JSON_KEY);
     if (value.isUndefined())
-        return false;
+        return;
+    QByteArray signatureHex;
+    signatureHex.append(value.toString());
     mCryptoSignature.clear();
-    mCryptoSignature.append(value.toString());
+    mCryptoSignature.append(QByteArray::fromHex(signatureHex));
 
     mIsLoaded = true;
 }
@@ -168,8 +171,8 @@ void CIndividualTask::GenerateTasks(const QString &studentListFilename,
         return;
     }
 
-    QJsonDocument list;
-    list.fromBinaryData(listFile.readAll());
+    QByteArray content = listFile.readAll();
+    QJsonDocument list = QJsonDocument::fromJson(content);
 
     if (!list.isArray()) {
         status = LIST_FORMAT;
@@ -185,8 +188,8 @@ void CIndividualTask::GenerateTasks(const QString &studentListFilename,
             return;
         }
 
-        QJsonValue idItem = item.value(STUDENT_ID_STRING_JSON_KEY);
-        QJsonValue prefixItem = item.value(STUDENT_SECRET_PREFIX_STRING_JSON_KEY);
+        QJsonValue idItem = item.toObject().value(STUDENT_ID_STRING_JSON_KEY);
+        QJsonValue prefixItem = item.toObject().value(STUDENT_SECRET_PREFIX_STRING_JSON_KEY);
         if (idItem.isUndefined() || prefixItem.isUndefined()) {
             status = LIST_FORMAT;
             errorMessage = "No necessary fields for person in JSON!";

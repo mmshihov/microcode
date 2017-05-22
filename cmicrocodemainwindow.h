@@ -15,6 +15,8 @@ class CMicrocodeMainWindow;
 class CMicrocodeMainWindow;
 class QGridLayout;
 class QMenu;
+class CIndividualTaskCreationDialog;
+
 
 class CEngineShifter : public QObject {
     Q_OBJECT
@@ -47,6 +49,8 @@ public:
 private:
     Ui::CMicrocodeMainWindow *ui;
 
+    CIndividualTaskCreationDialog *mCreateTasksDialog;
+
     TState                  mState;
     CEngineModel           *mCurrentEngine;
     QVector<CEngineMvcItem> mEngineMvcItems;
@@ -58,6 +62,8 @@ private:
     QMenu                  *mActionsMcuMenu;
 
     QAction                *mOpenWorkAction;
+    QAction                *mCheckWorkAction;
+    QAction                *mCreateWorkAction;
     QAction                *mPc2DcLoadAction;
     QAction                *mPcs1LoadAction;
     QAction                *mDcmcLoadAction;
@@ -108,6 +114,8 @@ private:
     static QGridLayout *CreateGridLayout();
 
     void CreateOpenWorkAction();
+    void CreateCheckWorkAction();
+    void CreateCreateWorkAction();
     void CreatePc2DcLoadAction();
     void CreatePcs1LoadAction();
     void CreateDcmcLoadAction();
@@ -153,6 +161,8 @@ protected:
 signals:
 public slots:
     void OpenWorkSlot();
+    void CheckWorkSlot();
+    void CreateWorkSlot();
     void LoadPc2DcSlot();
     void LoadPcs1Slot();
     void LoadDcmcSlot();

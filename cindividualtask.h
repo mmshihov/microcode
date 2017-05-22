@@ -1,6 +1,8 @@
 #ifndef CINDIVIDUALTASK_H
 #define CINDIVIDUALTASK_H
 
+#include <QObject>
+#include <QString>
 #include <QByteArray>
 
 #include "csignalpermutation.h"
@@ -42,9 +44,10 @@ public:
     QString StudentId() const {return mStudentId;}
 
 private:
-    CIndividualTask() {mIsLoaded = false;}
+    CIndividualTask(){mIsLoaded = false;}
     CIndividualTask(const CIndividualTask&) {}
-    ~CIndividualTask() {}
+
+    virtual ~CIndividualTask() {}
 
     static const unsigned int SWAP_HISTORY_BYTE_COUNT = 32;
 

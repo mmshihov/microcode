@@ -17,8 +17,9 @@ public:
 private slots:
     void on_mOpenRecipientsFileButton_clicked();
     void on_mTaskFolderButton_clicked();
-    void on_mGenerateButton_2_clicked();
     void on_mGenerateButton_clicked();
+
+    void on_mCancelButton_clicked();
 
 private:
     Ui::CIndividualTaskCreationDialog *ui;
