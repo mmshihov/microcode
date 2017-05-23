@@ -96,7 +96,8 @@ SOURCES += main.cpp\
     models/add/FADD/cfaddtextsource.cpp \
     models/add/FADD/cfaddinputdialog.cpp \
     cindividualtask.cpp \
-    cindividualtaskcreationdialog.cpp
+    cindividualtaskcreationdialog.cpp \
+    ccheckindividualtaskdialog.cpp
 
 HEADERS  += cmicrocodemainwindow.h \
     cbitblock.h \
@@ -185,7 +186,8 @@ HEADERS  += cmicrocodemainwindow.h \
     models/add/FADD/cfaddinputdialog.h \
     version_number.h \
     cindividualtask.h \
-    cindividualtaskcreationdialog.h
+    cindividualtaskcreationdialog.h \
+    ccheckindividualtaskdialog.h
 
 FORMS    += cmicrocodemainwindow.ui \
     models/mul/PCS1/cpcs1firstwidget.ui \
@@ -216,7 +218,8 @@ FORMS    += cmicrocodemainwindow.ui \
     models/div/FZUS/cfzusway3widget.ui \
     models/add/FADD/cfaddway1widget.ui \
     models/add/FADD/cfaddinputdialog.ui \
-    cindividualtaskcreationdialog.ui
+    cindividualtaskcreationdialog.ui \
+    ccheckindividualtaskdialog.ui
 
 RESOURCES += \
     resources.qrc \

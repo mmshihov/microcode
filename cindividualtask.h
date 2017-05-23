@@ -73,4 +73,18 @@ private:
                           EStatus& status);
 };
 
+class CIndividualTaskStatus : public QObject {
+    Q_OBJECT
+public:
+    explicit CIndividualTaskStatus(QObject *parent = 0) : QObject(parent) {}
+
+    static void PersonsFileAccessError(CIndividualTask::EStatus &status, QString &message);
+    static void WrongJsonPersonListError(CIndividualTask::EStatus &status, QString &message);
+    static void WrongJsonPersonError(CIndividualTask::EStatus &status, QString &message);
+    static void WrongJsonIncompletePersonError(CIndividualTask::EStatus &status, QString &message);
+    static void TaskSaveError(CIndividualTask::EStatus &status, QString &message);
+signals:
+public slots:
+};
+
 #endif // CINDIVIDUALTASK_H

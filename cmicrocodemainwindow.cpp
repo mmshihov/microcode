@@ -16,6 +16,7 @@
 #include "cromeditordelegate.h"
 #include "cindividualtask.h"
 #include "cindividualtaskcreationdialog.h"
+#include "ccheckindividualtaskdialog.h"
 #include "ctextout.h"
 
 #include "version_number.h"
@@ -44,8 +45,6 @@ CMicrocodeMainWindow::CMicrocodeMainWindow(QWidget *parent)
 
     InitRNG();
 
-    mCreateTasksDialog = 0;
-
     mCurrentEngine = 0;
     SetState(READY_STATE);
 
@@ -61,9 +60,6 @@ CMicrocodeMainWindow::CMicrocodeMainWindow(QWidget *parent)
 
 CMicrocodeMainWindow::~CMicrocodeMainWindow() {
     delete ui;
-
-    if (mCreateTasksDialog != 0)
-        delete mCreateTasksDialog;
 }
 
 void CMicrocodeMainWindow::ShiftToEngine(unsigned int index) {
@@ -119,7 +115,7 @@ void CMicrocodeMainWindow::CreateInitialMenuBar() {
 }
 
 void CMicrocodeMainWindow::CreateInitialToolBar() {
-    ui->mainToolBar->addAction(mOpenWorkAction);
+    ui->mainToolBar->addAction(mOpenVariantAction);
     ui->mainToolBar->addSeparator();
     ui->mainToolBar->addAction(mExecuteAction);
     ui->mainToolBar->addAction(mStopCpuAction);
@@ -129,9 +125,9 @@ void CMicrocodeMainWindow::CreateInitialToolBar() {
 }
 
 void CMicrocodeMainWindow::CreateFileActions() {
-    CreateOpenWorkAction();
-    CreateCheckWorkAction();
-    CreateCreateWorkAction();
+    CreateOpenVariantAction();
+    CreateCheckVariantAction();
+    CreateCreateVariantsAction();
 
     CreatePc2DcLoadAction();
     CreatePcs1LoadAction();
@@ -172,7 +168,11 @@ void CMicrocodeMainWindow::UpdateActions() {
 }
 
 void CMicrocodeMainWindow::UpdateFileActions() {
-    mOpenWorkAction->setEnabled(mCurrentEngine == 0);
+    bool isEngineAndExecution =  (mCurrentEngine != 0) &&  mCurrentEngine->IsExecutionMode();
+
+    mOpenVariantAction->setEnabled(!isEngineAndExecution);
+
+    mCheckVariantAction->setEnabled(CIndividualTask::Instance()->IsLoaded());
     mTaskLoaderMenu->setEnabled(mCurrentEngine == 0);
 }
 
@@ -246,36 +246,36 @@ QGridLayout *CMicrocodeMainWindow::CreateGridLayout() {
     return layout;
 }
 
-void CMicrocodeMainWindow::CreateOpenWorkAction() {
-    QAction *action = new QAction(QIcon(":/common/open.png"), tr("&Open individual task..."), this);
+void CMicrocodeMainWindow::CreateOpenVariantAction() {
+    QAction *action = new QAction(QIcon(":/common/open.png"), tr("&Open individual variant..."), this);
     action->setShortcut(QKeySequence::Open);
-    QString text(tr("Load individual task from file..."));
+    QString text(tr("Load individual variant from file..."));
     action->setToolTip(text);
     action->setStatusTip(text);
-    connect(action, SIGNAL(triggered()), SLOT(OpenWorkSlot()));
+    connect(action, SIGNAL(triggered()), SLOT(OpenVariantSlot()));
 
-    mOpenWorkAction = action;
+    mOpenVariantAction = action;
 }
 
-void CMicrocodeMainWindow::CreateCheckWorkAction() {
-    QAction *action = new QAction(QIcon(":/common/check.png"), tr("&Check individual task..."), this);
-    QString text(tr("Check individual task..."));
+void CMicrocodeMainWindow::CreateCheckVariantAction() {
+    QAction *action = new QAction(QIcon(":/common/check.png"), tr("&Check individual variant..."), this);
+    QString text(tr("Check individual vatiant..."));
     action->setToolTip(text);
     action->setStatusTip(text);
-    connect(action, SIGNAL(triggered()), SLOT(CheckWorkSlot()));
+    connect(action, SIGNAL(triggered()), SLOT(CheckVariantSlot()));
 
-    mCheckWorkAction = action;
+    mCheckVariantAction = action;
 }
 
-void CMicrocodeMainWindow::CreateCreateWorkAction() {
-    QAction *action = new QAction(QIcon(":/common/save.png"), tr("&Create individual tasks..."), this);
+void CMicrocodeMainWindow::CreateCreateVariantsAction() {
+    QAction *action = new QAction(QIcon(":/common/save.png"), tr("C&reate individual variants..."), this);
     action->setShortcut(QKeySequence::Save);
-    QString text(tr("Create individual tasks..."));
+    QString text(tr("Create individual variants..."));
     action->setToolTip(text);
     action->setStatusTip(text);
-    connect(action, SIGNAL(triggered()), SLOT(CreateWorkSlot()));
+    connect(action, SIGNAL(triggered()), SLOT(CreateVariantsSlot()));
 
-    mCreateWorkAction = action;
+    mCreateVariantsAction = action;
 }
 
 void CMicrocodeMainWindow::CreatePc2DcLoadAction() {
@@ -484,9 +484,10 @@ void CMicrocodeMainWindow::CreateRuLanguageAction() {
 QMenu *CMicrocodeMainWindow::CreateFileMenu() {
     QMenu *menu = new QMenu(tr("&File"));
 
-    menu->addAction(mOpenWorkAction);
-    menu->addAction(mCheckWorkAction);
-    menu->addAction(mCreateWorkAction);
+    menu->addAction(mOpenVariantAction);
+    menu->addSeparator();
+    menu->addAction(mCheckVariantAction);
+    menu->addAction(mCreateVariantsAction);
     menu->addSeparator();
     menu->addMenu(CreateTaskLoaderMenu());
     menu->addSeparator();
@@ -633,9 +634,21 @@ void CMicrocodeMainWindow::IntegrateMvc() {
     CreateEngineLayout();
     CreateActionsForEngines();
 
+    IndividualiseTasks();
     ShiftToEngine(0);
 
     UpdateActions();
+}
+
+void CMicrocodeMainWindow::IndividualiseTasks() {
+    if (!CIndividualTask::Instance()->IsLoaded())
+        return;
+
+    for (int i=0; i<mEngineMvcItems.count(); ++i) {
+        CIndividualTask::Instance()->InitSignalPermutation(
+                mEngineMvcItems[i].EngineModel()->McuOutputSwap());
+        mEngineMvcItems[i].EngineModel()->UpdateHintsViews();
+    }
 }
 
 void CMicrocodeMainWindow::closeEvent(QCloseEvent *event) {
@@ -653,32 +666,36 @@ void CMicrocodeMainWindow::closeEvent(QCloseEvent *event) {
     }
 }
 
-void CMicrocodeMainWindow::OpenWorkSlot() {
+void CMicrocodeMainWindow::OpenVariantSlot() {
     QString fileName = QFileDialog::getOpenFileName(
                     this,
-                    tr("Open individual task JSON file"),
+                    tr("Open individual variant JSON file"),
                     QString(),
-                    tr("JSON recipient list (*.json);;JSON recipient list in text (*.txt)"));
+                    tr("JSON individual variant (*.json);;JSON individual variant in text (*.txt)"));
     if (fileName.isNull())
         return;
 
     CIndividualTask::Instance()->LoadFromFile(fileName);
 
     if (!CIndividualTask::Instance()->IsLoaded()) {
-        QMessageBox::warning(this, tr("Error of task loading!"), tr("Check your task file, please!"));
+        QMessageBox::warning(this, tr("Error of variant loading!"), tr("Check your variant file, please!"));
         return;
     }
 
-    //TODO update hints...
+    UpdateActions();
+    IndividualiseTasks();
 }
 
-void CMicrocodeMainWindow::CheckWorkSlot() {
-    //TODO: dialog etc...
+void CMicrocodeMainWindow::CheckVariantSlot() {
+    if (mCheckTaskDialog.isEmpty())
+        mCheckTaskDialog = SharedPtr<CCheckIndividualTaskDialog>(new CCheckIndividualTaskDialog());
+
+    mCheckTaskDialog->exec();
 }
 
-void CMicrocodeMainWindow::CreateWorkSlot() {
-    if (mCreateTasksDialog == 0)
-        mCreateTasksDialog = new CIndividualTaskCreationDialog();
+void CMicrocodeMainWindow::CreateVariantsSlot() {
+    if (mCreateTasksDialog.isEmpty())
+        mCreateTasksDialog = SharedPtr<CIndividualTaskCreationDialog>(new CIndividualTaskCreationDialog());
 
     mCreateTasksDialog->exec();
 }

@@ -5,6 +5,7 @@
 #include <QVector>
 
 #include "cenginefactory.h"
+#include "sharedptr.h"
 
 
 namespace Ui {
@@ -16,7 +17,7 @@ class CMicrocodeMainWindow;
 class QGridLayout;
 class QMenu;
 class CIndividualTaskCreationDialog;
-
+class CCheckIndividualTaskDialog;
 
 class CEngineShifter : public QObject {
     Q_OBJECT
@@ -49,7 +50,8 @@ public:
 private:
     Ui::CMicrocodeMainWindow *ui;
 
-    CIndividualTaskCreationDialog *mCreateTasksDialog;
+    SharedPtr<CIndividualTaskCreationDialog> mCreateTasksDialog;
+    SharedPtr<CCheckIndividualTaskDialog>    mCheckTaskDialog;
 
     TState                  mState;
     CEngineModel           *mCurrentEngine;
@@ -61,9 +63,9 @@ private:
     QMenu                  *mActionsModeMenu;
     QMenu                  *mActionsMcuMenu;
 
-    QAction                *mOpenWorkAction;
-    QAction                *mCheckWorkAction;
-    QAction                *mCreateWorkAction;
+    QAction                *mOpenVariantAction;
+    QAction                *mCheckVariantAction;
+    QAction                *mCreateVariantsAction;
     QAction                *mPc2DcLoadAction;
     QAction                *mPcs1LoadAction;
     QAction                *mDcmcLoadAction;
@@ -113,9 +115,9 @@ private:
 
     static QGridLayout *CreateGridLayout();
 
-    void CreateOpenWorkAction();
-    void CreateCheckWorkAction();
-    void CreateCreateWorkAction();
+    void CreateOpenVariantAction();
+    void CreateCheckVariantAction();
+    void CreateCreateVariantsAction();
     void CreatePc2DcLoadAction();
     void CreatePcs1LoadAction();
     void CreateDcmcLoadAction();
@@ -155,14 +157,16 @@ private:
     QString ErrorDescriptionStringForTest(unsigned i) const;
 
     void IntegrateMvc();
+    void IndividualiseTasks();
+
 protected:
     virtual void closeEvent(QCloseEvent *event);
 
 signals:
 public slots:
-    void OpenWorkSlot();
-    void CheckWorkSlot();
-    void CreateWorkSlot();
+    void OpenVariantSlot();
+    void CheckVariantSlot();
+    void CreateVariantsSlot();
     void LoadPc2DcSlot();
     void LoadPcs1Slot();
     void LoadDcmcSlot();

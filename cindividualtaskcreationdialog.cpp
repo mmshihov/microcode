@@ -37,7 +37,7 @@ void CIndividualTaskCreationDialog::on_mTaskFolderButton_clicked() {
 
     QString dirName = QFileDialog::getExistingDirectory(
                     this,
-                    tr("Select individual tasks directory"));
+                    tr("Select individual variants directory"));
     if (dirName.isNull())
         return;
 
@@ -50,7 +50,7 @@ void CIndividualTaskCreationDialog::on_mGenerateButton_clicked() {
 
         QMessageBox::information(this,
                                  tr("Incomplete input"),
-                                 tr("Recipient list and task folder is necessary!"));
+                                 tr("Recipient list and variant folder is necessary!"));
         return;
     }
 
@@ -65,7 +65,7 @@ void CIndividualTaskCreationDialog::on_mGenerateButton_clicked() {
 
     if (genStatus != CIndividualTask::OK) {
         QMessageBox::information(this,
-                                 tr("Tasks generation error"),
+                                 tr("Variants generation error"),
                                  message);
         reject();
         return;

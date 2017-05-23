@@ -23,7 +23,7 @@ void CIndividualTask::InitSignalPermutation(CSignalPermutation &permutation) {
         p2l[i]  = i; // тождественная подстановка
     }
 
-    InitP2L(p2l,permutation.Dim());
+    InitP2L(p2l, permutation.Dim());
     permutation.SetP2L(p2l);
 
     delete[] p2l;
@@ -166,8 +166,7 @@ void CIndividualTask::GenerateTasks(const QString &studentListFilename,
                                     QString& errorMessage) {
     QFile listFile(studentListFilename);
     if (!listFile.open(QIODevice::ReadOnly)) {
-        status = IO_ERROR;
-        errorMessage = "Can't open persons list file!";
+        CIndividualTaskStatus::PersonsFileAccessError(status, errorMessage);
         return;
     }
 
@@ -175,24 +174,21 @@ void CIndividualTask::GenerateTasks(const QString &studentListFilename,
     QJsonDocument list = QJsonDocument::fromJson(content);
 
     if (!list.isArray()) {
-        status = LIST_FORMAT;
-        errorMessage = "Wrong JSON format for persons list!";
+        CIndividualTaskStatus::WrongJsonPersonListError(status, errorMessage);
         return;
     }
 
     for (int i=0; i<list.array().count(); ++i) {
         QJsonValue item = list.array().at(i);
         if (!item.isObject()) {
-            status = LIST_FORMAT;
-            errorMessage = "Wrong JSON format for person in list!";
+            CIndividualTaskStatus::WrongJsonPersonError(status, errorMessage);
             return;
         }
 
         QJsonValue idItem = item.toObject().value(STUDENT_ID_STRING_JSON_KEY);
         QJsonValue prefixItem = item.toObject().value(STUDENT_SECRET_PREFIX_STRING_JSON_KEY);
         if (idItem.isUndefined() || prefixItem.isUndefined()) {
-            status = LIST_FORMAT;
-            errorMessage = "No necessary fields for person in JSON!";
+            CIndividualTaskStatus::WrongJsonIncompletePersonError(status, errorMessage);
             return;
         }
 
@@ -204,10 +200,34 @@ void CIndividualTask::GenerateTasks(const QString &studentListFilename,
 
         SaveSeparateTask(id, swapHistory, signature, taskFoldername, status);
         if (status != OK) {
-            errorMessage = "Separate task save error!";
+            CIndividualTaskStatus::TaskSaveError(status, errorMessage);
             return;
         }
     }
 }
 
 
+void CIndividualTaskStatus::PersonsFileAccessError(CIndividualTask::EStatus &status, QString &message) {
+    status  = CIndividualTask::IO_ERROR;
+    message = tr("Can't open persons list file!");
+}
+
+void CIndividualTaskStatus::WrongJsonPersonListError(CIndividualTask::EStatus &status, QString &message) {
+    status  = CIndividualTask::LIST_FORMAT;
+    message = tr("Wrong JSON format for persons list!");
+}
+
+void CIndividualTaskStatus::WrongJsonPersonError(CIndividualTask::EStatus &status, QString &message) {
+    status  = CIndividualTask::LIST_FORMAT;
+    message = tr("Wrong JSON format for person in list!");
+}
+
+void CIndividualTaskStatus::WrongJsonIncompletePersonError(CIndividualTask::EStatus &status, QString &message) {
+    status  = CIndividualTask::LIST_FORMAT;
+    message = tr("No necessary fields for person in JSON!");
+}
+
+void CIndividualTaskStatus::TaskSaveError(CIndividualTask::EStatus &status, QString &message) {
+    status  = CIndividualTask::IO_ERROR;
+    message = tr("Separate variant save error!");
+}

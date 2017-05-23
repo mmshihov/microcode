@@ -4,6 +4,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGridLayout>
+#include <QSplitter>
 
 void CEngineWidgetEngineController::DoUpdateModeView() {
     mView->UpdateModeView();
@@ -123,6 +124,12 @@ QGridLayout *CEngineWidget::CreateGridLayout() {
     QGridLayout *layout = new QGridLayout();
     layout->setContentsMargins(0,0,0,0);
     return layout;
+}
+
+QSplitter *CEngineWidget::CreateHorizontalSplitter() {
+    QSplitter *splitter = new QSplitter();
+    splitter->setOrientation(Qt::Horizontal);
+    return splitter;
 }
 
 void CEngineWidget::HideAllMcus() {

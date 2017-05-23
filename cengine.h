@@ -80,6 +80,8 @@ public:
                           CHint         *hint);
     ~CEngineModel();
 
+    CSignalPermutation& McuOutputSwap() {return mMcuOutputSwap;}
+
     unsigned int L2PMcuInputIndex(unsigned int index) const {return mMcuInputSwap.L2PIndex(index);}
     unsigned int L2PMcuOutputIndex(unsigned int index) const {return mMcuOutputSwap.L2PIndex(index);}
 

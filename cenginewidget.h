@@ -9,6 +9,7 @@ class CEngineWidget;
 class QVBoxLayout;
 class QHBoxLayout;
 class QGridLayout;
+class QSplitter;
 
 class CEngineWidgetEngineController : public CEngineController {
 public:
@@ -61,6 +62,7 @@ private:
     static QVBoxLayout *CreateVerticalLayout();
     static QHBoxLayout *CreateHorizontalLayout();
     static QGridLayout *CreateGridLayout();
+    static QSplitter   *CreateHorizontalSplitter();
 
     void HideAllMcus();
 signals:

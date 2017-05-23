@@ -2,6 +2,59 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="ru_RU">
 <context>
+    <name>CCheckIndividualTaskDialog</name>
+    <message>
+        <location filename="../ccheckindividualtaskdialog.ui" line="26"/>
+        <source>Check my variant</source>
+        <translation>Проверить мой вариант</translation>
+    </message>
+    <message>
+        <location filename="../ccheckindividualtaskdialog.ui" line="36"/>
+        <source>Secret:</source>
+        <translation>Секрет:</translation>
+    </message>
+    <message>
+        <location filename="../ccheckindividualtaskdialog.ui" line="83"/>
+        <source>Check</source>
+        <translation>Проверить</translation>
+    </message>
+    <message>
+        <location filename="../ccheckindividualtaskdialog.ui" line="90"/>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
+    </message>
+    <message>
+        <location filename="../ccheckindividualtaskdialog.cpp" line="24"/>
+        <source>Check error</source>
+        <translation>Ошибка при проверке</translation>
+    </message>
+    <message>
+        <location filename="../ccheckindividualtaskdialog.cpp" line="24"/>
+        <source>No individual variant was loaded!</source>
+        <translation>Индивидуальный вариант не был загружен!</translation>
+    </message>
+    <message>
+        <location filename="../ccheckindividualtaskdialog.cpp" line="30"/>
+        <source>Corruption error</source>
+        <translation>Повреждение целостности</translation>
+    </message>
+    <message>
+        <location filename="../ccheckindividualtaskdialog.cpp" line="30"/>
+        <source>Individual variant was corrupted!</source>
+        <translation>Индивидуальный вариант был поврежден!</translation>
+    </message>
+    <message>
+        <location filename="../ccheckindividualtaskdialog.cpp" line="38"/>
+        <source>Individual variant correct for:</source>
+        <translation>Индивидуальный вариант верен для:</translation>
+    </message>
+    <message>
+        <location filename="../ccheckindividualtaskdialog.cpp" line="36"/>
+        <source>OK</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
     <name>CDcacTextSource</name>
     <message>
         <location filename="../models/mul/DCAC/cdcactextsource.cpp" line="17"/>
@@ -854,6 +907,107 @@
     </message>
 </context>
 <context>
+    <name>CIndividualTaskCreationDialog</name>
+    <message>
+        <location filename="../cindividualtaskcreationdialog.ui" line="40"/>
+        <source>The secret:</source>
+        <translation>Секрет:</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtaskcreationdialog.ui" line="67"/>
+        <source>Recipients file (json):</source>
+        <translation>Файл с адресатами:</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtaskcreationdialog.ui" line="26"/>
+        <source>Individual variant creation</source>
+        <translation>Создание индивидуальных вариантов</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtaskcreationdialog.ui" line="74"/>
+        <source>Variants destination:</source>
+        <translation>Варианты в папку:</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtaskcreationdialog.ui" line="81"/>
+        <location filename="../cindividualtaskcreationdialog.ui" line="92"/>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtaskcreationdialog.ui" line="144"/>
+        <source>Generate variants</source>
+        <translation>Генерировать варианты</translation>
+    </message>
+    <message>
+        <source>Generate tasks</source>
+        <translation type="obsolete">Генерировать</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtaskcreationdialog.ui" line="151"/>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtaskcreationdialog.cpp" line="26"/>
+        <source>Open recipient list file</source>
+        <translation>Открыть файл списка адресатов</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtaskcreationdialog.cpp" line="28"/>
+        <source>JSON recipient list (*.json);;JSON recipient list in text (*.txt)</source>
+        <translation>Список адресатов в JSON (*.json);;Список адресатов в JSON (*.txt)</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtaskcreationdialog.cpp" line="40"/>
+        <source>Select individual variants directory</source>
+        <translation>Выберите папку назначения для файлов индивидуальных вариантов</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtaskcreationdialog.cpp" line="53"/>
+        <source>Recipient list and variant folder is necessary!</source>
+        <translation>Список адресатов и папка назначения - необходимые параметры!</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtaskcreationdialog.cpp" line="68"/>
+        <source>Variants generation error</source>
+        <translation>Ошибка генерации файлов вариантов</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtaskcreationdialog.cpp" line="52"/>
+        <source>Incomplete input</source>
+        <translation>Недостаточно аргументов</translation>
+    </message>
+</context>
+<context>
+    <name>CIndividualTaskStatus</name>
+    <message>
+        <location filename="../cindividualtask.cpp" line="212"/>
+        <source>Can&apos;t open persons list file!</source>
+        <translation>Невозможно открыть файл со списком адресатов!</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtask.cpp" line="217"/>
+        <source>Wrong JSON format for persons list!</source>
+        <translation>Неверный JSON-формат списка адресатов!</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtask.cpp" line="222"/>
+        <source>Wrong JSON format for person in list!</source>
+        <translation>Неверный JSON-формат для объекта &apos;адресат&apos; в списке!</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtask.cpp" line="227"/>
+        <source>No necessary fields for person in JSON!</source>
+        <translation>Отсутствуют необходимые поля объекта &apos;адресат&apos; в JSON!</translation>
+    </message>
+    <message>
+        <location filename="../cindividualtask.cpp" line="232"/>
+        <source>Separate variant save error!</source>
+        <translation>Ошибка сохранения индивидуального варианта!</translation>
+    </message>
+</context>
+<context>
     <name>CManualRomTableModel</name>
     <message>
         <location filename="../cromtablemodel.cpp" line="260"/>
@@ -891,269 +1045,277 @@
         <translation type="obsolete">&amp;Открыть индивидуальное задание</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="240"/>
         <source>&amp;Open individual task</source>
-        <translation>&amp;Загрузить индивидуальное задание</translation>
+        <translation type="obsolete">&amp;Загрузить индивидуальное задание</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="242"/>
         <source>Load individusl tasks from file</source>
-        <translation>Загрузить индивидуальное задание из файла</translation>
+        <translation type="obsolete">Загрузить индивидуальное задание из файла</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="251"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="282"/>
         <source>Introduction task (feel free)</source>
         <translation>Вводное задание (расслабьтесь, освойтесь)</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="252"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="283"/>
         <source>Transform Direct code into Two&apos;s compliment</source>
         <translation>Преобразование прямого кода в дополнительный</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="261"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="292"/>
         <source>Direct code multiplication</source>
         <translation>Умножение в прямом коде</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="262"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="293"/>
         <source>Learn 4 ways of number multiplication (Direct code)</source>
         <translation>Изучите 4 способа умножения в прямом коде</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="271"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="302"/>
         <source>Two&apos;s compliment multiplication (manual correction)</source>
         <translation>Умножение в дополнительном коде с ручной коррекцией</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="272"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="303"/>
         <source>Learn 4 ways of integer multiplication (Two&apos;s compliment, manual correction)</source>
         <translation>Изучите 4 способа умножения в дополнительном коде с ручной коррекцией</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="281"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="312"/>
         <source>Two&apos;s compliment multiplication (autocorrection)</source>
         <translation>Умножение в дополнительном коде с автоматической коррекцией</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="282"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="313"/>
         <source>Learn 4 ways of integer multiplication (Two&apos;s compliment, manual autocorrection)</source>
         <translation>Изучите 4 способа умножения в дополнительном коде с автоматической коррекцией</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="301"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="332"/>
         <source>Floating point: addition</source>
         <translation>Сложение в формате с плавающей точкой</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="302"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="333"/>
         <source>Learn addition in floating point format</source>
         <translation>Изучите особенности сложения в формате с плавающей точкой</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="291"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="322"/>
         <source>Unsigned division A:B = q rem r</source>
         <translation>Беззнаковое деление A:B=q rem r</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="66"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="70"/>
         <source>Your program is executing now!
 Do you want to break it, and switch to another task?</source>
         <translation>В настоящий момент выполняется микропрограмма!
 Вы действительно хотите её прервать и переключиться на другое задание?</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="292"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="271"/>
+        <source>C&amp;reate individual variants...</source>
+        <translation>Создать &amp;индивидуальные варианты...</translation>
+    </message>
+    <message>
+        <location filename="../cmicrocodemainwindow.cpp" line="273"/>
+        <source>Create individual variants...</source>
+        <translation>Создать индивидуальные варианты...</translation>
+    </message>
+    <message>
+        <location filename="../cmicrocodemainwindow.cpp" line="323"/>
         <source>Learn 2 ways of unsigned integer division</source>
         <translation>Изучите 2 способа беззнакового деления</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="311"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="342"/>
         <source>&amp;Exit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="313"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="344"/>
         <source>Exit program</source>
         <translation>Выйти из программы</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="322"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="353"/>
         <source>&amp;Programming</source>
         <translation>&amp;Программирование</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="323"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="354"/>
         <source>Stop debug/autotest and start programming</source>
         <translation>Остановить отладку/тестирование и перейти в режим программирования</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="332"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="363"/>
         <source>&amp;Debug</source>
         <translation>&amp;Отладка</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="333"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="364"/>
         <source>Run CPU and start debugging</source>
         <translation>Запустить ЦУУ и начать отладку</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="342"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="373"/>
         <source>&amp;Autotest</source>
         <translation>&amp;Тестирование</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="343"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="374"/>
         <source>Run CPU and start autotests</source>
         <translation>Запустить ЦУУ и начать тестирование</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="352"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="383"/>
         <source>M&amp;anual</source>
         <translation>&amp;Ручное</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="353"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="384"/>
         <source>Manual control</source>
         <translation>Ручное управление</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="362"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="393"/>
         <source>M&amp;ili</source>
         <translation>Автомат М&amp;или</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="363"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="394"/>
         <source>Select Mili automate as MCU</source>
         <translation>Выбрать автомат Мили  в качестве устройства управления</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="372"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="403"/>
         <source>M&amp;oore</source>
         <translation>Автомат М&amp;ура</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="373"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="404"/>
         <source>Select Moore automate as MCU</source>
         <translation>Выбрать автомат Мура в качестве устройтва управления</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="382"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="413"/>
         <source>&amp;Stop CPU</source>
         <translation>&amp;Остановить ЦУУ</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="383"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="414"/>
         <source>F2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="384"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="415"/>
         <source>Stop (F2) CPU, break debug/autotest and start programming</source>
         <translation>Остановить (F2) ЦУУ, прервать отладку/тестирование и перейти в режим программирования</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="393"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="424"/>
         <source>&amp;Execute</source>
         <translation>&amp;Выполнить</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="395"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="426"/>
         <source>Execute (F10) debug step or autotests</source>
         <translation>Выполнить шаг или тестирование</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="404"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="435"/>
         <source>Undo action</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="405"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="436"/>
         <source>To previous step</source>
         <translation>Сделать шаг назад</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="414"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="445"/>
         <source>Redo action</source>
         <translation>Вперед</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="415"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="446"/>
         <source>To next step</source>
         <translation>Перейти вперед по истории шагов</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="424"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="455"/>
         <source>&amp;About program...</source>
         <translation>&amp;О программе...</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="425"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="456"/>
         <source>Show program info</source>
         <translation>Показать сведения о программе</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="434"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="465"/>
         <source>&amp;English</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="435"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="466"/>
         <source>Switch laguage to English</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="444"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="475"/>
         <source>&amp;Ð ÑÑÑÐºÐ¸Ð¹</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="445"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="476"/>
         <source>ÐÐµÑÐµÐºÐ»ÑÑÐ¸ÑÑ ÑÐ·ÑÐº Ð½Ð° Ð ÑÑÑÐºÐ¸Ð¹</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="454"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="485"/>
         <source>&amp;File</source>
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="466"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="500"/>
         <source>&amp;Tasks</source>
         <translation>&amp;Задания</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="471"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="505"/>
         <source>&amp;Actions</source>
         <translation>&amp;Действия</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="473"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="507"/>
         <source>&amp;Mode</source>
         <translation>&amp;Режим</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="480"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="514"/>
         <source>M&amp;CU</source>
         <translation>&amp;Управление</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="498"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="532"/>
         <source>&amp;Load Tasks</source>
         <translation>&amp;Загрузить задачи</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="517"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="551"/>
         <source>&amp;Help</source>
         <translation>&amp;Помощь</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="532"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="566"/>
         <source>DEBUG congratulations!</source>
         <translation>Успешно пройден отладочный тест!</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="533"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="567"/>
         <source>DEBUG test successfully passed!
 
 P.S. Now you in &apos;Programming&apos; mode.</source>
@@ -1161,12 +1323,12 @@ P.S. Now you in &apos;Programming&apos; mode.</source>
 P.S. Вы переведены в режим программирования.</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="540"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="574"/>
         <source>AUTOTESTS congratulations!</source>
         <translation>Автоматическое тестирование успешно пройдено!</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="541"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="575"/>
         <source>All AUTOTESTS successfully passed!
 
 P.S. Now you in &apos;Programming&apos; mode.</source>
@@ -1174,17 +1336,17 @@ P.S. Now you in &apos;Programming&apos; mode.</source>
 P.S. Вы переведены в режим программирования.</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="557"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="591"/>
         <source>Autotest failed!</source>
         <translation>Автоматическое тестирование не пройдено!</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="567"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="601"/>
         <source>User break</source>
         <translation>Прервано пользователем</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="568"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="602"/>
         <source>Engine execution breaked by user
 
 P.S. Now you in &apos;Programming&apos; mode.</source>
@@ -1192,28 +1354,68 @@ P.S. Now you in &apos;Programming&apos; mode.</source>
   P.S. Вы переведены в режим программирования.</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="575"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="609"/>
         <source>The INPUT:</source>
         <translation>Входные данные:</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="582"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="616"/>
         <source>Right OUTPUT:</source>
         <translation>Правильный вывод:</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="589"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="623"/>
         <source>Your OUTPUT:</source>
         <translation>Ваш вывод:</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="65"/>
-        <location filename="../cmicrocodemainwindow.cpp" line="612"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="672"/>
+        <source>Open individual variant JSON file</source>
+        <translation>Открыть JSON-файл индивидуального варианта</translation>
+    </message>
+    <message>
+        <location filename="../cmicrocodemainwindow.cpp" line="674"/>
+        <source>JSON individual variant (*.json);;JSON individual variant in text (*.txt)</source>
+        <translation>Индивидуальный вариант в JSON (*.json);;Индивидуальный вариант в JSON (*.txt)</translation>
+    </message>
+    <message>
+        <location filename="../cmicrocodemainwindow.cpp" line="681"/>
+        <source>Error of variant loading!</source>
+        <translation>Ошибка загрузки индивидуального варианта!</translation>
+    </message>
+    <message>
+        <location filename="../cmicrocodemainwindow.cpp" line="681"/>
+        <source>Check your variant file, please!</source>
+        <translation>Пожалуйста, проверьте файл с вашим вариантом!</translation>
+    </message>
+    <message>
+        <location filename="../cmicrocodemainwindow.cpp" line="69"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="658"/>
         <source>Are you sure?</source>
         <translation>Вы уверены?</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="613"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="250"/>
+        <source>&amp;Open individual variant...</source>
+        <translation>От&amp;крыть индивидуальный вариант...</translation>
+    </message>
+    <message>
+        <location filename="../cmicrocodemainwindow.cpp" line="252"/>
+        <source>Load individual variant from file...</source>
+        <translation>Открыть JSON-файл индивидуального варианта...</translation>
+    </message>
+    <message>
+        <location filename="../cmicrocodemainwindow.cpp" line="261"/>
+        <source>&amp;Check individual variant...</source>
+        <translation>&amp;Проверить индивидуальный вариант...</translation>
+    </message>
+    <message>
+        <location filename="../cmicrocodemainwindow.cpp" line="262"/>
+        <source>Check individual vatiant...</source>
+        <translation>Проверить индивидуальный вариант...</translation>
+    </message>
+    <message>
+        <location filename="../cmicrocodemainwindow.cpp" line="659"/>
         <source>You loose all microcode after exit!
 We not save it, because is MICROcode.
 Are you wrote your microcode down on paper?</source>
@@ -1221,23 +1423,21 @@ Are you wrote your microcode down on paper?</source>
 Потрудитесь записать его хоть на ладошке!</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="626"/>
         <source>Is in TODO list, really</source>
-        <translation>Мы правда планируем сделать это</translation>
+        <translation type="obsolete">Мы правда планируем сделать это</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="627"/>
         <source>Individual tasks can be loaded from a file.</source>
-        <translation>Индивидуальные задания могут быть загружены из файла...
+        <translation type="obsolete">Индивидуальные задания могут быть загружены из файла...
 Но не сегодня.</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="743"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="816"/>
         <source>About</source>
         <translation>О микрокоде</translation>
     </message>
     <message>
-        <location filename="../cmicrocodemainwindow.cpp" line="745"/>
+        <location filename="../cmicrocodemainwindow.cpp" line="818"/>
         <source> Microprogramming trainer.
  First rock in 2016,
  author: M.M.Shihov (e-mail: &apos;m.m.shihov@gmail.com&apos;)</source>
