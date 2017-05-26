@@ -134,27 +134,32 @@ void CIndividualTask::LoadFromFile(const QString &taskFilename) {
     if (!jsonTask.isObject())
         return;
 
-    QJsonValue value;
-    value = jsonTask.object().value(STUDENT_ID_STRING_JSON_KEY);
-    if (value.isUndefined())
+    QJsonValue studentIdValue;
+    studentIdValue = jsonTask.object().value(STUDENT_ID_STRING_JSON_KEY);
+    if (studentIdValue.isUndefined())
         return;
-    mStudentId = value.toString();
 
-    value = jsonTask.object().value(SWAP_HISTORY_STRING_JSON_KEY);
-    if (value.isUndefined())
+    QJsonValue swapHistoryValue;
+    swapHistoryValue = jsonTask.object().value(SWAP_HISTORY_STRING_JSON_KEY);
+    if (swapHistoryValue.isUndefined())
         return;
     QByteArray swapHistoryHex;
-    swapHistoryHex.append(value.toString());
-    mSwapHistory.clear();
-    mSwapHistory.append(QByteArray::fromHex(swapHistoryHex));
+    swapHistoryHex.append(swapHistoryValue.toString());
 
-    value = jsonTask.object().value(SIGNATURE_STRING_JSON_KEY);
-    if (value.isUndefined())
+    QJsonValue signatureValue;
+    signatureValue = jsonTask.object().value(SIGNATURE_STRING_JSON_KEY);
+    if (signatureValue.isUndefined())
         return;
+
+    mStudentId = studentIdValue.toString();
+
     QByteArray signatureHex;
-    signatureHex.append(value.toString());
+    signatureHex.append(signatureValue.toString());
     mCryptoSignature.clear();
     mCryptoSignature.append(QByteArray::fromHex(signatureHex));
+
+    mSwapHistory.clear();
+    mSwapHistory.append(QByteArray::fromHex(swapHistoryHex));
 
     mIsLoaded = true;
 }

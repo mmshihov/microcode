@@ -55,6 +55,7 @@ private:
 
     TState                  mState;
     CEngineModel           *mCurrentEngine;
+    unsigned int            mCurrentEngineIndex;
     QVector<CEngineMvcItem> mEngineMvcItems;
 
     QMenu                  *mTaskMenu;
@@ -158,6 +159,8 @@ private:
 
     void IntegrateMvc();
     void IndividualiseTasks();
+
+    void UpdateWindowTitle();
 
 protected:
     virtual void closeEvent(QCloseEvent *event);

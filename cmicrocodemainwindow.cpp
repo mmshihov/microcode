@@ -54,8 +54,7 @@ CMicrocodeMainWindow::CMicrocodeMainWindow(QWidget *parent)
     CreateInitialToolBar();
 
     UpdateActions();
-
-    setWindowTitle("Microcode " MICROCODE_VERSION);
+    UpdateWindowTitle();
 }
 
 CMicrocodeMainWindow::~CMicrocodeMainWindow() {
@@ -83,7 +82,9 @@ void CMicrocodeMainWindow::ShiftToEngine(unsigned int index) {
     mCurrentEngine = 0;
     if ((int)index < mEngineMvcItems.count()) {
         mEngineMvcItems[index].EngineView()->show();
-        mCurrentEngine = mEngineMvcItems[index].EngineModel();
+
+        mCurrentEngineIndex = index;
+        mCurrentEngine = mEngineMvcItems[mCurrentEngineIndex].EngineModel();
 
         mCurrentEngine->UpdateModeViews();
         mCurrentEngine->UpdateMcuTypeViews();
@@ -91,9 +92,8 @@ void CMicrocodeMainWindow::ShiftToEngine(unsigned int index) {
         mCurrentEngine->UpdateMemoryViews();
         mCurrentEngine->UpdateLogicViews();
 
-        setWindowTitle(QString("Microcode " MICROCODE_VERSION " (%1)").arg(mEngineMvcItems[index].Name()));
-
         UpdateActions();
+        UpdateWindowTitle();
     }
 }
 
@@ -651,6 +651,24 @@ void CMicrocodeMainWindow::IndividualiseTasks() {
     }
 }
 
+void CMicrocodeMainWindow::UpdateWindowTitle() {
+    if ((mCurrentEngine == 0) || ((int)mCurrentEngineIndex >= mEngineMvcItems.count())) {
+        if (CIndividualTask::Instance()->IsLoaded()) {
+            setWindowTitle(QString("Microcode " MICROCODE_VERSION " --- %1")
+                    .arg(CIndividualTask::Instance()->StudentId())
+                    );
+        } else {
+            setWindowTitle("Microcode " MICROCODE_VERSION);
+        }
+        return;
+    }
+
+    setWindowTitle(QString("Microcode " MICROCODE_VERSION " (%1) --- %2")
+                       .arg(mEngineMvcItems[mCurrentEngineIndex].Name())
+                       .arg(CIndividualTask::Instance()->StudentId())
+                       );
+}
+
 void CMicrocodeMainWindow::closeEvent(QCloseEvent *event) {
     event->ignore();
     if (QMessageBox::question(
@@ -683,6 +701,8 @@ void CMicrocodeMainWindow::OpenVariantSlot() {
     }
 
     UpdateActions();
+    UpdateWindowTitle();
+
     IndividualiseTasks();
 }
 
