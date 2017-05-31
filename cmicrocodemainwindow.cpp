@@ -383,7 +383,7 @@ void CMicrocodeMainWindow::CreateAutotestModeAction() {
 }
 
 void CMicrocodeMainWindow::CreateManualControlAction() {
-    QAction *action = new QAction(tr("M&anual"), this);
+    QAction *action = new QAction(QIcon(":/common/manualgun.png"), tr("M&anual"), this);
     QString text(tr("Manual control"));
     action->setToolTip(text);
     action->setStatusTip(text);
@@ -393,7 +393,7 @@ void CMicrocodeMainWindow::CreateManualControlAction() {
 }
 
 void CMicrocodeMainWindow::CreateMiliControlAction() {
-    QAction *action = new QAction(tr("M&ili"), this);
+    QAction *action = new QAction(QIcon(":/common/miligun.png"), tr("M&ili"), this);
     QString text(tr("Select Mili automate as MCU"));
     action->setToolTip(text);
     action->setStatusTip(text);
@@ -403,7 +403,7 @@ void CMicrocodeMainWindow::CreateMiliControlAction() {
 }
 
 void CMicrocodeMainWindow::CreateMooreControlAction() {
-    QAction *action = new QAction(tr("M&oore"), this);
+    QAction *action = new QAction(QIcon(":/common/mooregun.png"), tr("M&oore"), this);
     QString text(tr("Select Moore automate as MCU"));
     action->setToolTip(text);
     action->setStatusTip(text);
