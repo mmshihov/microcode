@@ -351,6 +351,7 @@ void CMicrocodeMainWindow::CreateQuitAction() {
 
 void CMicrocodeMainWindow::CreateProgrammingModeAction() {
     QAction *action = new QAction(QIcon(":/common/programming.png"), tr("&Programming"), this);
+    action->setShortcut(QKeySequence("F4"));
     QString text(tr("Stop debug/autotest and start programming"));
     action->setToolTip(text);
     action->setStatusTip(text);
@@ -361,6 +362,7 @@ void CMicrocodeMainWindow::CreateProgrammingModeAction() {
 
 void CMicrocodeMainWindow::CreateDebugModeAction() {
     QAction *action = new QAction(QIcon(":/common/debug.png"), tr("&Debug"), this);
+    action->setShortcut(QKeySequence("F9"));
     QString text(tr("Run CPU and start debugging"));
     action->setToolTip(text);
     action->setStatusTip(text);
@@ -371,6 +373,7 @@ void CMicrocodeMainWindow::CreateDebugModeAction() {
 
 void CMicrocodeMainWindow::CreateAutotestModeAction() {
     QAction *action = new QAction(QIcon(":/common/autotest.png"), tr("&Autotest"), this);
+    action->setShortcut(QKeySequence("F5"));
     QString text(tr("Run CPU and start autotests"));
     action->setToolTip(text);
     action->setStatusTip(text);
@@ -663,9 +666,16 @@ void CMicrocodeMainWindow::UpdateWindowTitle() {
         return;
     }
 
-    setWindowTitle(QString("Microcode " MICROCODE_VERSION " (%1) --- %2")
+    if (CIndividualTask::Instance()->IsLoaded()) {
+        setWindowTitle(QString("Microcode " MICROCODE_VERSION " (%1) --- %2")
+                           .arg(mEngineMvcItems[mCurrentEngineIndex].Name())
+                           .arg(CIndividualTask::Instance()->StudentId())
+                           );
+        return;
+    }
+
+    setWindowTitle(QString("Microcode " MICROCODE_VERSION " (%1)")
                        .arg(mEngineMvcItems[mCurrentEngineIndex].Name())
-                       .arg(CIndividualTask::Instance()->StudentId())
                        );
 }
 
